@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{lost.educattain}}</h1>
+        <h3>{{lost.educattain}}</h3>
         <h2>{{lost.esr}}</h2>
     </div>
 </template>
