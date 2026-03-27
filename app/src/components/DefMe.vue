@@ -1,7 +1,7 @@
 <template>
     <router-link :to="PovPath" class="card">
         <h2>{{ props.lost.educattain }}</h2>
-        <h2>{{ props.lost.esr }}</h2>
+        <h2>{{ props.lost.nycgov_income }}</h2>
     </router-link>
 
 </template>
@@ -19,7 +19,7 @@ const props = defineProps({
     },
 })
 const PovPath = computed(() => {
-    return `/poverty/${props.lost.esr}`
+    return `/poverty/${props.lost.nycgov_income}`
 })
 </script>
 

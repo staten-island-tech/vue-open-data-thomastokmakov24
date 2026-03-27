@@ -23,6 +23,7 @@ onMounted(() => {
   GetStats()
 })
 
+console
 </script>
 
 <style scoped>

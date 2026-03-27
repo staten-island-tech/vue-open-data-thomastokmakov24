@@ -8,7 +8,7 @@
 import { Scatter } from 'vue-chartjs'
 const data = {
   datasets: [{
-    label: 'Scatter Dataset',
+    label: '100 Person Sample of Education Level vs. Income',
     data: [{
       x: -10,
       y: 0

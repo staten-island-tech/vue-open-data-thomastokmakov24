@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>{{lost.educattain}}</h3>
-        <h2>{{lost.esr}}</h2>
+        <h2>{{lost.nycgov_income}}</h2>
     </div>
 </template>
 
@@ -10,11 +10,11 @@ import {onMounted, ref, watch} from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const lost = ref([])
-async function getPovertyData(esr) {
+async function getPovertyData(nycgov_income) {
   try {
     const response = await fetch('https://data.cityofnewyork.us/resource/aqqw-n6ec.json')
     const data = await response.json()
-    lost.value = data.find(item => item.esr === esr) || {}  // Find matching item or default to empty object
+    lost.value = data.find(item => item.nycgov_income === nycgov_income) || {}  // Find matching item or default to empty object
   } catch (error) {
     console.error('Error fetching data:', error)
   }
