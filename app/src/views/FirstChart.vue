@@ -1,45 +1,46 @@
-<template>
-    <div>
-
-    </div>
-</template>
-
 <script setup>
+import { ref, onMounted } from 'vue'
 import { Scatter } from 'vue-chartjs'
-const data = {
-  datasets: [{
-    label: '100 Person Sample of Education Level vs. Income',
-    data: [{
-      x: -10,
-      y: 0
-    }, {
-      x: 0,
-      y: 10
-    }, {
-      x: 10,
-      y: 5
-    }, {
-      x: 0.5,
-      y: 5.5
-    }],
-    backgroundColor: 'rgb(255, 99, 132)'
-  }],
-};
+import {
+  Chart as ChartJS,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+} from 'chart.js'
 
-const config = {
-  type: 'scatter',
-  data: data,
-  options: {
-    scales: {
-      x: {
-        type: 'linear',
-        position: 'bottom'
-      }
-    }
+ChartJS.register(LinearScale, PointElement, Tooltip, Legend)
+
+const data = ref({
+  datasets: []
+})
+
+const options = {
+  scales: {
+    x: { type: 'linear', title: { display: true, text: 'Education' } },
+    y: { title: { display: true, text: 'Income' } }
   }
-};
+}
+
+onMounted(async () => {
+  const res = await fetch('https://data.cityofnewyork.us/resource/aqqw-n6ec.json')
+  const apiData = await res.json()
+
+  data.value = {
+    datasets: [
+      {
+        label: 'NYC Data',
+        data: apiData.map(item => ({
+          x: parseFloat(item.educattain),
+          y: parseFloat(item.nycgov_income)
+        })),
+        backgroundColor: 'blue'
+      }
+    ]
+  }
+})
 </script>
 
-<style scoped>
-
-</style>
+<template>
+  <Scatter :data="data" :options="options" />
+</template>

@@ -34,7 +34,7 @@ watch(() => route.params.id,
 function(educattain ) {getPovertyData(educattain )} ,
 )
 onMounted(function () {
-    getPovertyData(route.params.educattain )/* this is a reference to the colon in the router */
+    getPovertyData(route.params.nycgov_income )/* this is a reference to the colon in the router */
 })
 </script>
 
