@@ -1,25 +1,19 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { Scatter } from 'vue-chartjs'
-import {
-  Chart as ChartJS,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend
-} from 'chart.js'
+import { Chart as ChartJS, LinearScale, PointElement, Tooltip, Legend } from 'chart.js'
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend)
 
 const data = ref({
-  datasets: []
+  datasets: [],
 })
 
 const options = {
   scales: {
     x: { type: 'linear', title: { display: true, text: 'Education' } },
-    y: { title: { display: true, text: 'Income' } }
-  }
+    y: { title: { display: true, text: 'Income' } },
+  },
 }
 
 onMounted(async () => {
@@ -30,17 +24,18 @@ onMounted(async () => {
     datasets: [
       {
         label: 'NYC Data',
-        data: apiData.map(item => ({
+        data: apiData.map((item) => ({
           x: parseFloat(item.educattain),
-          y: parseFloat(item.nycgov_income)
+          y: parseFloat(item.nycgov_income),
         })),
-        backgroundColor: 'blue'
-      }
-    ]
+        backgroundColor: 'blue',
+      },
+    ],
   }
 })
 </script>
 
 <template>
   <Scatter :data="data" :options="options" />
+  <h1>Yearly Salary vs Education Level (100 Person Sample)</h1>
 </template>

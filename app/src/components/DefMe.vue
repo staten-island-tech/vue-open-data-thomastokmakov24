@@ -1,8 +1,10 @@
 <template>
-    <router-link :to="PovPath" class="card">
+    <!-- i removed the router-link because the link wasnt working and with my first and second pages working i do not neeed the broken links anymore ! -->
+    <div class="card">
+        
         <h2>{{ props.lost.educattain }}</h2>
         <h2>{{ props.lost.nycgov_income }}</h2>
-    </router-link>
+    </div>
 
 </template>
 
@@ -24,6 +26,10 @@ const PovPath = computed(() => {
 </script>
 
 <style scoped>
+h1 {
+
+    color: darkblue;
+}
 /* .card {
     display: block;
     padding: 1rem;
